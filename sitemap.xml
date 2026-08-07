@@ -1,2 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://YOUR-DOMAIN/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url></urlset>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://nichefix.gr/</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://nichefix.gr/niches/travel.html</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://nichefix.gr/niches/energy.html</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://nichefix.gr/niches/medical.html</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://nichefix.gr/niches/family.html</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://nichefix.gr/niches/eyewear.html</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://nichefix.gr/blog/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://nichefix.gr/blog/article-generator.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://nichefix.gr/blog/guides/best-premium-luggage-greece.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://nichefix.gr/blog/guides/backup-power-home-greece.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://nichefix.gr/blog/guides/aed-workplace-guide.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://nichefix.gr/blog/guides/small-kids-room-guide.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://nichefix.gr/blog/guides/premium-eyewear-fit-guide.html</loc><changefreq>weekly</changefreq></url>
+</urlset>

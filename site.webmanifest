@@ -1,0 +1,9 @@
+{
+  "name": "NicheFix",
+  "short_name": "NicheFix",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f3ec",
+  "theme_color": "#0d2036",
+  "icons": []
+}

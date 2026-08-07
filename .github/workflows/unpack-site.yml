@@ -1,0 +1,69 @@
+name: Materialize NicheFix Reborn
+
+on:
+  push:
+    branches: [nichefix-reborn-stage]
+    paths:
+      - 'package/site.b64'
+      - '.github/workflows/unpack-site.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  unpack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout staging branch
+        uses: actions/checkout@v4
+        with:
+          ref: nichefix-reborn-stage
+          fetch-depth: 0
+
+      - name: Rebuild site archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          base64 -d package/site.b64 > /tmp/nichefix.tar.gz
+          mkdir -p /tmp/nichefix-site
+          tar -xzf /tmp/nichefix.tar.gz -C /tmp/nichefix-site --strip-components=1
+
+      - name: Replace repository content
+        shell: bash
+        run: |
+          set -euo pipefail
+          find . -mindepth 1 -maxdepth 1 ! -name '.git' ! -name '.github' ! -name 'package' -exec rm -rf {} +
+          cp -a /tmp/nichefix-site/. .
+          rm -rf package
+          rm -f .github/workflows/unpack-site.yml
+          rmdir .github/workflows 2>/dev/null || true
+          rmdir .github 2>/dev/null || true
+
+      - name: Validate materialized build
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f index.html
+          test -f assets/data/products.json
+          test -f skills/ui-guru/SKILL.md
+          test -f blog/index.html
+          test -f studio/article-generator.html
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          products=json.loads(Path('assets/data/products.json').read_text())
+          articles=json.loads(Path('assets/data/articles.json').read_text())
+          assert len(products)==100, len(products)
+          assert len(articles)==20, len(articles)
+          print('Validated:',len(products),'products and',len(articles),'articles')
+          PY
+
+      - name: Commit materialized marketplace
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Materialize NicheFix problem-marketplace rebuild"
+          git push origin nichefix-reborn-stage

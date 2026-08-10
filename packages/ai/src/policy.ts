@@ -47,12 +47,22 @@ export function providerConfigured(provider: ProviderId) {
   }[provider];
 }
 
-export function orderedCandidates(intent: ModelIntent, mode: RoutingMode = "free-first"): RegistryModelId[] {
+export function orderedCandidates(
+  intent: ModelIntent,
+  mode: RoutingMode = "free-first",
+): RegistryModelId[] {
   const rawOverride = process.env[`MODEL_${intent.toUpperCase()}`];
+
   if (rawOverride && !isRegistryModelId(rawOverride)) {
     throw new Error(`Invalid MODEL_${intent.toUpperCase()} value. Expected provider:model.`);
   }
-  const base: RegistryModelId[] = rawOverride ? [rawOverride, ...defaults[intent]] : [...defaults[intent]];
+
+  const base: RegistryModelId[] = [...defaults[intent]];
+  if (rawOverride) {
+    const override: RegistryModelId = rawOverride;
+    base.unshift(override);
+  }
+
   if (mode === "local-only") return base.filter((id) => id.startsWith("ollama:"));
   if (mode === "quality-first") {
     return [...base].sort((a, b) => qualityRank[splitProvider(a)] - qualityRank[splitProvider(b)]);

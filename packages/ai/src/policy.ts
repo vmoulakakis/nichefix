@@ -52,16 +52,15 @@ export function orderedCandidates(
   mode: RoutingMode = "free-first",
 ): RegistryModelId[] {
   const rawOverride = process.env[`MODEL_${intent.toUpperCase()}`];
+  const override: RegistryModelId | undefined =
+    rawOverride && isRegistryModelId(rawOverride) ? rawOverride : undefined;
 
-  if (rawOverride && !isRegistryModelId(rawOverride)) {
+  if (rawOverride && !override) {
     throw new Error(`Invalid MODEL_${intent.toUpperCase()} value. Expected provider:model.`);
   }
 
   const base: RegistryModelId[] = [...defaults[intent]];
-  if (rawOverride) {
-    const override: RegistryModelId = rawOverride;
-    base.unshift(override);
-  }
+  if (override) base.unshift(override);
 
   if (mode === "local-only") return base.filter((id) => id.startsWith("ollama:"));
   if (mode === "quality-first") {

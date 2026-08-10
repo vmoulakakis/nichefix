@@ -24,21 +24,22 @@ Reusable, provider-neutral foundation for building production AI SaaS products.
 - Supabase
 - Vitest + Promptfoo
 - Biome
-- Langfuse-ready observability contract
+- Observability contract with Langfuse/OpenTelemetry adapters kept outside business code
 
 ## Structure
 
 ```text
-apps/web/          Next.js UI + route handlers
-packages/ai/       provider registry, capability routing, model policy
-packages/agents/   opt-in agent orchestration primitives
-packages/tools/    free API/tool adapters and registry
-packages/db/       Supabase clients
-registry/          reviewed provider/API/upstream metadata
-skills/            operational skills for the AI development team
-supabase/          migrations
-evals/             behavioral evaluation assets
-docs/              architecture, deployment and security
+apps/web/                  Next.js UI + route handlers
+packages/ai/               provider registry, capability routing, model policy
+packages/agents/           opt-in agent orchestration primitives
+packages/tools/            free API/tool adapters and registry
+packages/db/               Supabase clients
+packages/observability/    neutral traces/metrics contract
+registry/                  reviewed provider/API/upstream metadata
+skills/                    operational skills for the AI development team
+supabase/                  migrations
+evals/                     behavioral evaluation assets
+docs/                      architecture, deployment, security, observability
 ```
 
 ## Bootstrap
@@ -47,7 +48,7 @@ docs/              architecture, deployment and security
 corepack enable
 corepack prepare pnpm@11.17.0 --activate
 pnpm install
-cp .env.example .env.local
+cp .env.example apps/web/.env.local
 pnpm dev
 ```
 

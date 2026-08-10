@@ -11,16 +11,35 @@ const defaults: Record<ModelIntent, string[]> = {
   premium: ["openai:gpt-5-mini", "google:gemini-2.5-pro", "openrouter:openai/gpt-5-mini"],
 };
 
+const qualityRank: Record<string, number> = {
+  openai: 0,
+  google: 1,
+  groq: 2,
+  openrouter: 3,
+  ollama: 4,
+};
+
+export function splitProvider(modelId: string) {
+  const separator = modelId.indexOf(":");
+  return separator === -1 ? "" : modelId.slice(0, separator);
+}
+
 export function providerConfigured(provider: string) {
-  return ({ openai: !!process.env.OPENAI_API_KEY, google: !!process.env.GOOGLE_GENERATIVE_AI_API_KEY, groq: !!process.env.GROQ_API_KEY, openrouter: !!process.env.OPENROUTER_API_KEY, ollama: !!process.env.OLLAMA_BASE_URL } as Record<string, boolean>)[provider] ?? false;
+  return ({
+    openai: !!process.env.OPENAI_API_KEY,
+    google: !!process.env.GOOGLE_GENERATIVE_AI_API_KEY,
+    groq: !!process.env.GROQ_API_KEY,
+    openrouter: !!process.env.OPENROUTER_API_KEY,
+    ollama: !!process.env.OLLAMA_BASE_URL,
+  } as Record<string, boolean>)[provider] ?? false;
 }
 
 export function orderedCandidates(intent: ModelIntent, mode: RoutingMode = "free-first") {
   const override = process.env[`MODEL_${intent.toUpperCase()}`];
   const base = override ? [override, ...defaults[intent]] : [...defaults[intent]];
   if (mode === "local-only") return base.filter((id) => id.startsWith("ollama:"));
-  if (mode === "quality-first") return [...base].sort((a) => (a.startsWith("openai:") ? -1 : 0));
+  if (mode === "quality-first") {
+    return [...base].sort((a, b) => (qualityRank[splitProvider(a)] ?? 99) - (qualityRank[splitProvider(b)] ?? 99));
+  }
   return base;
 }
-
-export function splitProvider(modelId: string) { return modelId.split(":", 1)[0] ?? ""; }

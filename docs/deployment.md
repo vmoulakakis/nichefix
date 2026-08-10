@@ -1,5 +1,13 @@
 # Deployment
 
+## Local
+
+The Next.js project root is `apps/web`, so create its environment file from the repository root:
+
+```bash
+cp .env.example apps/web/.env.local
+```
+
 ## Vercel
 
 Recommended project configuration:

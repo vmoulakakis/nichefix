@@ -1,0 +1,62 @@
+{
+  "updated_at": "2026-08-10",
+  "policy": "Free tiers are for development/low-volume use unless the provider explicitly offers production terms. Verify quotas before launch.",
+  "services": [
+    {
+      "id": "ollama",
+      "category": "llm",
+      "cost": "local compute only",
+      "env": "OLLAMA_BASE_URL",
+      "production": "self-host decision",
+      "source": "https://github.com/ollama/ollama"
+    },
+    {
+      "id": "openrouter-free",
+      "category": "llm-router",
+      "cost": "free models; 50 requests/day on free account; higher free-model limit after purchased credits",
+      "env": "OPENROUTER_API_KEY",
+      "production": "prototype/low-volume unless upgraded",
+      "source": "https://openrouter.ai/docs/guides/routing/routers/free-router"
+    },
+    {
+      "id": "groq",
+      "category": "llm",
+      "cost": "free tier available; quotas are model/account specific",
+      "env": "GROQ_API_KEY",
+      "production": "verify dashboard limits",
+      "source": "https://console.groq.com/docs/rate-limits"
+    },
+    {
+      "id": "google-gemini",
+      "category": "llm-multimodal",
+      "cost": "free tier available for selected models; quotas are model/project specific",
+      "env": "GOOGLE_GENERATIVE_AI_API_KEY",
+      "production": "verify current pricing and rate-limit dashboard",
+      "source": "https://ai.google.dev/gemini-api/docs/pricing"
+    },
+    {
+      "id": "tavily",
+      "category": "web-search",
+      "cost": "1000 API credits/month free; no credit card required",
+      "env": "TAVILY_API_KEY",
+      "production": "low-volume then paid",
+      "source": "https://docs.tavily.com/documentation/api-credits"
+    },
+    {
+      "id": "brave-search",
+      "category": "web-search",
+      "cost": "$5 monthly credits; payment details required for subscription",
+      "env": "BRAVE_SEARCH_API_KEY",
+      "production": "usage based",
+      "source": "https://api-dashboard.search.brave.com/documentation/pricing"
+    },
+    {
+      "id": "pexels",
+      "category": "media-search",
+      "cost": "free; default 200 requests/hour and 20000/month",
+      "env": "PEXELS_API_KEY",
+      "production": "allowed subject to attribution/API terms",
+      "source": "https://www.pexels.com/api/documentation/"
+    }
+  ]
+}

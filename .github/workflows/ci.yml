@@ -1,0 +1,20 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main, foundation-v1]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: corepack enable
+      - run: corepack prepare pnpm@11.17.0 --activate
+      - run: pnpm install --no-frozen-lockfile
+      - run: pnpm check
+      - run: pnpm build

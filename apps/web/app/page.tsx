@@ -8,25 +8,5 @@ const layers = [
 ] as const;
 
 export default function Home() {
-  return (
-    <main>
-      <span className="badge">FOUNDATION V1</span>
-      <h1>Build AI products without rebuilding the plumbing.</h1>
-      <p>
-        This repository is intentionally product-neutral. Product features should be added only after
-        the model, tool, data, security and evaluation contracts are working.
-      </p>
-      <div className="grid">
-        {layers.map(([title, description]) => (
-          <section className="card" key={title}>
-            <strong>{title}</strong>
-            <span>{description}</span>
-          </section>
-        ))}
-      </div>
-      <p>
-        Health: <code>/api/health</code> · AI smoke endpoint: <code>/api/ai</code>
-      </p>
-    </main>
-  );
+  return <main><span className="badge">FOUNDATION V1</span><h1>Build AI products without rebuilding the plumbing.</h1><p>This repository is intentionally product-neutral. Product features should be added only after the model, tool, data, security and evaluation contracts are working.</p><div className="grid">{layers.map(([title,description])=><section className="card" key={title}><strong>{title}</strong><span>{description}</span></section>)}</div><p>Health: <code>/api/health</code> · AI smoke endpoint: <code>/api/ai</code></p></main>;
 }

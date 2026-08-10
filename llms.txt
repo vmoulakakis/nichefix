@@ -2,20 +2,14 @@
 
 Purpose: reusable production foundation for AI SaaS products.
 
-## Start here
-- README.md — stack and bootstrap
-- AGENTS.md — mandatory engineering rules
-- docs/architecture.md — system boundaries and delivery lifecycle
-- skills/README.md — skill catalog and loading rules
-- registry/free-apis.json — reviewed free/low-cost provider metadata
+Start with README.md, AGENTS.md, docs/architecture.md and skills/README.md.
 
-## Code ownership
-- apps/web — Next.js application
-- packages/ai — all model/provider selection
-- packages/agents — opt-in agent loops
-- packages/tools — external tools/APIs
-- packages/db — Supabase clients
-- supabase/migrations — database schema and RLS
+Code ownership:
+- apps/web: Next.js application
+- packages/ai: all model/provider selection
+- packages/agents: opt-in agent loops
+- packages/tools: external tools/APIs
+- packages/db: Supabase clients
+- supabase/migrations: schema and RLS
 
-## Non-negotiables
-Do not commit secrets. Do not call model vendors directly from product features. Validate untrusted input. Use RLS for user data. Add deterministic tests and AI evals. Free providers are not production SLAs.
+Non-negotiables: no secrets, no direct provider calls from features, validate input, RLS for user data, deterministic tests plus AI evals.

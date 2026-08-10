@@ -9,8 +9,9 @@
     "build": "pnpm -r --if-present build",
     "typecheck": "pnpm -r --if-present typecheck",
     "test": "pnpm -r --if-present test",
-    "lint": "biome ci .",
+    "lint": "biome lint .",
     "format": "biome check --write .",
+    "format:check": "biome format .",
     "check": "pnpm lint && pnpm typecheck && pnpm test",
     "eval": "pnpm dlx promptfoo@0.121.19 eval -c evals/promptfooconfig.yaml"
   },

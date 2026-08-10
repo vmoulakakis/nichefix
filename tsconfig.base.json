@@ -12,6 +12,7 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "allowJs": false,
+    "types": ["node"],
     "noEmit": true
   }
 }

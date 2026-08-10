@@ -1,0 +1,15 @@
+# AI SaaS Foundation
+
+Purpose: reusable production foundation for AI SaaS products.
+
+Start with README.md, AGENTS.md, docs/architecture.md and skills/README.md.
+
+Code ownership:
+- apps/web: Next.js application
+- packages/ai: all model/provider selection
+- packages/agents: opt-in agent loops
+- packages/tools: external tools/APIs
+- packages/db: Supabase clients
+- supabase/migrations: schema and RLS
+
+Non-negotiables: no secrets, no direct provider calls from features, validate input, RLS for user data, deterministic tests plus AI evals.

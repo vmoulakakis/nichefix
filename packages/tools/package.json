@@ -1,0 +1,10 @@
+{
+  "name": "@foundation/tools",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": { "typecheck": "tsc --noEmit", "test": "vitest run --passWithNoTests" },
+  "dependencies": { "zod": "4.4.3", "@modelcontextprotocol/sdk": "1.30.0" },
+  "devDependencies": { "typescript": "7.0.2", "vitest": "4.1.10" }
+}

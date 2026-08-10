@@ -1,0 +1,30 @@
+{
+  "updated_at": "2026-08-10",
+  "policy": "Upstream material is reference/pattern input. Do not auto-copy source-available or unclear-license files. Our active skills live under /skills.",
+  "upstreams": [
+    {
+      "repo": "vercel/ai",
+      "commit": "74abcdfb6a41666b9910974510d6c9afd960ea1b",
+      "license": "Apache-2.0",
+      "use": "AI SDK patterns and coding-agent skill references"
+    },
+    {
+      "repo": "OpenRouterTeam/skills",
+      "commit": "f8fdfb73b85a5e94109577a3aebc260f151a6dac",
+      "license": "verify per repository before copying",
+      "use": "model discovery/provider skill patterns"
+    },
+    {
+      "repo": "anthropics/skills",
+      "commit": "f17010c9bb483898c1d9c9f42dde2b3a98889434",
+      "license": "mixed: many Apache-2.0 examples; document skills are source-available",
+      "use": "Agent Skills structure and skill-creator patterns"
+    },
+    {
+      "repo": "openai/openai-agents-js",
+      "package": "@openai/agents@0.14.0",
+      "license": "MIT",
+      "use": "opt-in agent orchestration"
+    }
+  ]
+}

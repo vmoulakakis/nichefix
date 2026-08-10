@@ -11,3 +11,4 @@
 - Do not infer protected/sensitive traits unless the product genuinely requires and lawfully permits it.
 - Add rate limiting and abuse controls before exposing AI endpoints publicly.
 - Maintain dependency and upstream-skill review as part of the release process.
+- pnpm lifecycle scripts are deny-by-default; `onlyBuiltDependencies` is an explicit reviewed allowlist and must not be replaced by `dangerouslyAllowAllBuilds`.

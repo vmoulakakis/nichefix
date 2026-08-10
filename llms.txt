@@ -1,0 +1,21 @@
+# AI SaaS Foundation
+
+Purpose: reusable production foundation for AI SaaS products.
+
+## Start here
+- README.md — stack and bootstrap
+- AGENTS.md — mandatory engineering rules
+- docs/architecture.md — system boundaries and delivery lifecycle
+- skills/README.md — skill catalog and loading rules
+- registry/free-apis.json — reviewed free/low-cost provider metadata
+
+## Code ownership
+- apps/web — Next.js application
+- packages/ai — all model/provider selection
+- packages/agents — opt-in agent loops
+- packages/tools — external tools/APIs
+- packages/db — Supabase clients
+- supabase/migrations — database schema and RLS
+
+## Non-negotiables
+Do not commit secrets. Do not call model vendors directly from product features. Validate untrusted input. Use RLS for user data. Add deterministic tests and AI evals. Free providers are not production SLAs.

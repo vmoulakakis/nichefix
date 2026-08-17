@@ -16,8 +16,8 @@
     "eval": "pnpm dlx promptfoo@0.121.19 eval -c evals/promptfooconfig.yaml"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.6",
-    "@types/node": "24.13.3",
+    "@biomejs/biome": "2.5.8",
+    "@types/node": "26.2.0",
     "typescript": "7.0.2",
     "vitest": "4.1.10"
   }
